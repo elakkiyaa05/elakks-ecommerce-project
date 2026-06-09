@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Signup Page</title>
+
+  <style>
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family:Arial, sans-serif;
+    }
+
+    body{
+      height:100vh;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      background:#f2f2f2;
+    }
+
+    .signup-container{
+      width:350px;
+      background:white;
+      padding:40px;
+      border-radius:10px;
+      box-shadow:0 0 10px rgba(0,0,0,0.2);
+    }
+
+    h2{
+      text-align:center;
+      margin-bottom:25px;
+      color:#333;
+    }
+
+    input{
+      width:100%;
+      padding:12px;
+      margin-bottom:15px;
+      border:1px solid #ccc;
+      border-radius:5px;
+      font-size:15px;
+    }
+
+    .password-box{
+      position:relative;
+      width:100%;
+    }
+
+    .password-box input{
+      padding-right:40px;
+    }
+
+    .toggle-eye{
+      position:absolute;
+      right:10px;
+      top:50%;
+      transform:translateY(-50%);
+      cursor:pointer;
+      font-size:18px;
+      user-select:none;
+      color:#555;
+    }
+
+    button{
+      width:100%;
+      padding:12px;
+      background:#4CAF50;
+      color:white;
+      border:none;
+      border-radius:5px;
+      font-size:16px;
+      cursor:pointer;
+    }
+
+    button:hover{
+      background:#45a049;
+    }
+
+    #error{
+      color:red;
+      text-align:center;
+      margin-bottom:10px;
+    }
+
+    .login-link{
+      text-align:center;
+      margin-top:15px;
+    }
+
+    .login-link a{
+      text-decoration:none;
+      color:#2196F3;
+    }
+
+  </style>
+
+</head>
+
+<body>
+
+  <div class="signup-container">
+
+    <h2>Signup</h2>
+
+    <p id="error"></p>
+
+    <form onsubmit="signup(event)">
+
+      <input type="text" id="name" placeholder="Enter your name">
+
+      <input type="email" id="email" placeholder="Enter your email">
+
+      <!-- Password with eye icon -->
+      <div class="password-box">
+        <input type="password" id="password" placeholder="Enter your password">
+        <span class="toggle-eye" onclick="togglePassword()">👁️</span>
+      </div>
+
+      <button type="submit">Signup</button>
+
+    </form>
+
+    <div class="login-link">
+      Already have an account?
+      <a href="login.html">Login</a>
+    </div>
+
+  </div>
+
+  <script>
+
+  function togglePassword() {
+    const password = document.getElementById("password");
+
+    password.type = password.type === "password" ? "text" : "password";
+  }
+
+  function signup(event) {
+    event.preventDefault();
+
+    const name = document.getElementById("name").value;
+    const email = document.getElementById("email").value;
+    const password = document.getElementById("password").value;
+
+    const errorText = document.getElementById("error");
+
+    errorText.innerText = "";
+
+    if (!name || !email || !password) {
+      errorText.innerText = "Please fill all fields";
+      return;
+    }
+
+    fetch("http://localhost:5000/signup", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ name, email, password })
+    })
+    .then(res => res.json())
+    .then(data => {
+
+      console.log("Backend Response:", data); // 🔥 IMPORTANT DEBUG
+
+      if (data.success) {
+        alert("Signup successful!");
+        window.location.href = "login.html";
+      } else {
+        errorText.innerText = data.message;
+      }
+
+    })
+    .catch(err => {
+      console.log("ERROR:", err);
+      errorText.innerText = "Server not responding";
+    });
+
+  }
+
+</script>
+
+</body>
+</html>

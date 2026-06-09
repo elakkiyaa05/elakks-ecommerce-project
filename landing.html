@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Landing Page</title>
+
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family:Arial, sans-serif;
+    }
+
+    body{
+      height:100vh;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      background:#f2f2f2;
+    }
+
+    .container{
+      background:white;
+      padding:40px;
+      border-radius:10px;
+      box-shadow:0 0 10px rgba(0,0,0,0.2);
+      text-align:center;
+      width:300px;
+    }
+
+    h1{
+      margin-bottom:30px;
+      color:#333;
+    }
+
+    .btn{
+      display:block;
+      width:100%;
+      padding:12px;
+      margin:15px 0;
+      border:none;
+      border-radius:5px;
+      font-size:16px;
+      cursor:pointer;
+      transition:0.3s;
+    }
+
+    .signup-btn{
+      background:#4CAF50;
+      color:white;
+    }
+
+    .signup-btn:hover{
+      background:#45a049;
+    }
+
+    .login-btn{
+      background:#2196F3;
+      color:white;
+    }
+
+    .login-btn:hover{
+      background:#1976D2;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+    <h1>Welcome</h1>
+
+    <button class="btn signup-btn" onclick="goToSignup()">
+      Signup
+    </button>
+
+    <button class="btn login-btn" onclick="goToLogin()">
+      Login
+    </button>
+  </div>
+
+  <script>
+    function goToSignup() {
+      window.location.href = "signup.html";
+    }
+
+    function goToLogin() {
+      window.location.href = "login.html";
+    }
+  </script>
+
+</body>
+</html>

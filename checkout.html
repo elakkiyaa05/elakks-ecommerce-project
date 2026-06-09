@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Checkout</title>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <nav class="navbar">
+  <h1 class="logo">MyShop</h1>
+
+  <div>
+    <a href="home.html">Home</a>
+    <a href="checkout.html">Cart</a>
+    <button onclick="logout()">Logout</button>
+  </div>
+</nav>
+
+  <div class="checkout-container">
+
+    <h2>Your Order</h2>
+
+    <div id="checkout-items"></div>
+
+    <h3 id="checkout-total">Total: ₹0</h3>
+
+    <form class="checkout-form">
+
+  <input type="text" placeholder="Enter your name">
+
+  <textarea placeholder="Enter your address"></textarea>
+
+  <button type="button" onclick="placeOrder()">
+    Place Order
+  </button>
+
+</form>
+
+  </div>
+
+  <script src="script.js"></script>
+<script src="checkout.js"></script>
+
+</body>
+</html>

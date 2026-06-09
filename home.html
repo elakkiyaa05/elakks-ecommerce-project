@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-Commerce Website</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <h1 class="logo">MyShop</h1>
+
+        <div class="nav-links">
+            <a href="home.html">Home</a>
+            <a href="checkout.html">Cart</a>
+
+            <span class="cart-text">
+                🛒 Cart: <span id="cart-count">0</span>
+            </span>
+
+            <button onclick="logout()" class="logout-btn">Logout</button>
+        </div>
+    </nav>
+
+    <!-- Search Box -->
+    <div class="search-box">
+        <input 
+            type="text" 
+            id="search-input" 
+            placeholder="Search products..."
+            onkeyup="searchProducts()"
+        >
+    </div>
+
+    <!-- 🔥 PRODUCTS FROM MONGODB -->
+    <h2 style="text-align:center; margin-top:20px;">Products</h2>
+
+    <section class="products" id="product-list"></section>
+
+    <!-- CART SECTION (your existing code) -->
+    <h2 style="text-align:center; margin-top:30px;">Cart Items</h2>
+
+    <div id="cart-items" class="cart-items"></div>
+
+    <h3 style="text-align:center;" id="total">Total: ₹0</h3>
+
+    <div style="text-align:center; margin:20px;">
+        <a href="checkout.html">
+            <button>Proceed to Checkout</button>
+        </a>
+    </div>
+
+    <!-- LOGIN CHECK -->
+    <script>
+        if (!localStorage.getItem("user")) {
+            window.location.href = "login.html";
+        }
+    </script>
+
+    
+
+    <!-- YOUR EXISTING SCRIPT -->
+    <script src="script.js"></script>
+
+</body>
+</html>
